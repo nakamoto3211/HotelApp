@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HotelApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class="container header">
+        <h1><%= link_to "Hotel App", root_path %></h1>
+        <% if user_signed_in? %>
+          <details>
+            <summary>
+              <%= image_tag current_user.icon_image.url, :size => '40x40' %>
+              <%= current_user.name %>
+            </summary>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :get %>
+              <%= link_to "アカウント", user_path(id: current_user), method: :get %>
+          </details>
+          
+        <% else %>
+          <div>
+            <button><%= link_to "ログイン", new_user_session_path, class: 'post' %></button>
+            <button><%= link_to "新規登録", new_user_registration_path, class: 'post' %></button>
+          </div>
+        <% end %>
+      </div>
+    </header>
+      <div class="container">
+        <%= yield %>
+      </div>
+    <footer>
+      <div class="container">
+        <h1>Hotel App</h1>
+        <small>© HotelApp 2023</small>
+      </div>
+    </footer>
+  </body>
+</html>

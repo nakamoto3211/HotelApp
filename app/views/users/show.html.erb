@@ -1,0 +1,32 @@
+<h2>設定</h2>
+
+<div class="ShowMain">
+  <div class="ShowHeader">
+    <h3>プロフィール</h3>
+    <%= link_to "編集", edit_user_registration_path, method: :get %>
+  </div>
+  <div class="ShowItem">
+    <label>アイコン画像</label>
+    <%= image_tag current_user.icon_image.url, :size => '70x70' %>
+  </div>
+  <div class="ShowItem">
+    <label>名前</label>
+    <p><%= @user.name %></p>
+  </div>
+
+  <div class="ShowHeader">
+    <h3>アカウント</h3>
+    <%= link_to "編集", edit_user_registration_path, method: :get %>
+  </div>
+  <div class="ShowItem">
+    <label>メールアドレス</label>
+    <p><%= @user.email %></p>
+  </div>
+  <div class="ShowItem">
+    <label>パスワード</label>
+    <p>*********</p>
+  </div>
+
+</div>
+
+

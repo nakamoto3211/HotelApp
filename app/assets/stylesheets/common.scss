@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+}
+
+header {
+  width: 100%;
+  height: 80px;
+  background-color: navy;
+  color: #fff;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer {
+  width: 100%;
+  background-color: navy;
+  color: #fff;
+}
