@@ -20,8 +20,10 @@
               <%= image_tag current_user.icon_image.url, :size => '40x40' %>
               <%= current_user.name %>
             </summary>
+            <div>
               <%= link_to "ログアウト", destroy_user_session_path, method: :get %>
               <%= link_to "アカウント", user_path(id: current_user), method: :get %>
+            </div>
           </details>
           
         <% else %>

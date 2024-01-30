@@ -5,7 +5,7 @@
   <%= form_with model: @user do |f| %>
     <div>
       <label>アイコン画像</label>
-      <%= image_tag current_user.icon_image.url, :size => '70x70' %>
+      <%= image_tag @user.icon_image.url, :size => '70x70'%>
       <%= f.file_field :icon_image %>
     </div>
     <div>
