@@ -17,7 +17,7 @@
         <% if user_signed_in? %>
           <details>
             <summary>
-              <%= image_tag current_user.icon_image.url, :size => '40x40' %>
+              <%= image_tag current_user.icon_image.url, :size => '40x40', class:"user_icon" %>
               <%= current_user.name %>
             </summary>
             <div>
