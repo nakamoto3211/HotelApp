@@ -7,7 +7,11 @@
   </div>
   <div class="ShowItem">
     <label>アイコン画像</label>
-    <%= image_tag @user.icon_image.url, :size => '70x70', class:"user_icon" %>
+    <% if @user.icon_image? %>
+      <%= image_tag @user.icon_image.url, :size => '70x70', class:"user_icon" %>
+    <% else %>
+      <%= image_tag "default.png" , :size => '70x70' %>
+    <% end %>
   </div>
   <div class="ShowItem">
     <label>名前</label>

@@ -5,7 +5,11 @@
   <%= form_with model: @user do |f| %>
     <div>
       <label>アイコン画像</label>
-      <%= image_tag @user.icon_image.url, :size => '70x70', class:"user_icon" %>
+      <% if @user.icon_image? %>
+        <%= image_tag @user.icon_image.url, :size => '70x70', class:"user_icon" %>
+      <% else %>
+        <%= image_tag "default.png" , :size => '70x70' %>
+      <% end %>
       <%= f.file_field :icon_image %>
     </div>
     <div>
@@ -15,8 +19,8 @@
 
     <div>
       <ul>
-        <li><%= link_to "キャンセル", :back %></li>
         <li><%= f.submit "保存" %></li>
+        <li><%= link_to "キャンセル", :back %></li>
       </ul>
     </div>
   <% end %>

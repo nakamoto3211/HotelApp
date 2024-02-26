@@ -1,8 +1,28 @@
-<h1><%= @index %></h1>
-<div>
-  <form>
-    <input type="text">
-    <input type="text">
-    <button>検索</button>
-  </form>
-</div>
+<h3>登録済み一覧</h3>
+<table>
+  <thead>
+    <tr>
+      <th>画像</th>
+      <th>施設名</th>
+      <th>紹介文</th>
+      <th>料金</th>
+      <th>作成日</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <% if room.hotel_image? %>
+          <td><%= image_tag room.hotel_image.url, :size => '140x70' %></td>
+        <% else %>
+          <td><%= image_tag "default_hotel.png", :size => '140x70' %></td>
+        <% end %>
+        <td><%= room.name %></td>
+        <td><%= room.detail %></td>
+        <td><%= room.charge %></td>
+        <td><%= room.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

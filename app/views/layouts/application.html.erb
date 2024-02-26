@@ -17,12 +17,19 @@
         <% if user_signed_in? %>
           <details>
             <summary>
-              <%= image_tag current_user.icon_image.url, :size => '40x40', class:"user_icon" %>
+              <% if current_user.icon_image? %>
+                <%= image_tag current_user.icon_image.url, :size => '40x40', class:"user_icon" %>
+              <% else %>
+                <%= image_tag "default.png", :size => '40x40' %>
+              <% end %>
               <%= current_user.name %>
             </summary>
             <div>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :get %>
+              <%= link_to "施設の新規登録", new_room_path, method: :get %>
+              <%= link_to "予約済み一覧", reservations_path, method: :get %>
+              <%= link_to "登録済み一覧", rooms_path, method: :get %>
               <%= link_to "アカウント", user_path(id: current_user), method: :get %>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :get %>
             </div>
           </details>
           
