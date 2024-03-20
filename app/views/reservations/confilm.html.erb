@@ -1,5 +1,5 @@
-<div>
-  <h3>予約内容の確認</h3>
+<div class="confilm-container">
+  <h3 class="page-title">予約内容の確認</h3>
 
   <div>
     <label>チェックイン</label>
@@ -19,7 +19,7 @@
   </div>
   <div>
     <label>お支払い金額</label>
-    <%= @total_charge %>
+    <%= number_to_currency(@total_charge.to_s(:delimited), unit: "¥", format: "%u %n" ) %>
   </div>
 
   <div>
@@ -32,6 +32,7 @@
 
       <%= f.submit "予約する"%>
     <% end %>
-    <%= link_to "キャンセル", :back %>
   </div>
+
+  <div><%= link_to "キャンセル", :back, class:"cancel-btn" %></div>
 </div>

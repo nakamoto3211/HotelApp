@@ -1,39 +1,40 @@
-<h2>設定</h2>
-
+<h1 class="page-title-conf">設定</h1>
 <div class="Show_Edit_Main">
-  <div class="Show_Edit_Header">
-    <h3>プロフィール</h3>
-    <%= link_to "編集", edit_user_path, method: :get %>
+  <div class="ShowPrf">
+    <div>
+      <h3>プロフィール</h3>
+      <%= link_to "編集", edit_user_path, method: :get, class:"cancel-btn" %>
+    </div>
+    <div>
+      <label>アイコン画像</label>
+      <% if @user.icon_image? %>
+        <%= image_tag @user.icon_image.url, :size => '70x70', class:"user_icon" %>
+      <% else %>
+        <%= image_tag "default.png" , :size => '70x70' %>
+      <% end %>
+    </div>
+    <div>
+      <label>名前</label>
+      <p><%= @user.name %></p>
+    </div>
   </div>
-  <div class="ShowItem">
-    <label>アイコン画像</label>
-    <% if @user.icon_image? %>
-      <%= image_tag @user.icon_image.url, :size => '70x70', class:"user_icon" %>
-    <% else %>
-      <%= image_tag "default.png" , :size => '70x70' %>
-    <% end %>
+  
+  <div class="ShowAcc">
+    <div>
+      <h3>アカウント</h3>
+      <%= link_to "編集", edit_user_registration_path, method: :get, class:"cancel-btn" %>
+    </div>
+    <div>
+      <label>メールアドレス</label>
+      <p><%= @user.email %></p>
+    </div>
+    <div>
+      <label>パスワード</label>
+      <p>*********</p>
+    </div>
   </div>
-  <div class="ShowItem">
-    <label>名前</label>
-    <p><%= @user.name %></p>
-  </div>
-
-  <div class="ShowHeader">
-    <h3>アカウント</h3>
-    <%= link_to "編集", edit_user_registration_path, method: :get %>
-  </div>
-  <div class="ShowItem">
-    <label>メールアドレス</label>
-    <p><%= @user.email %></p>
-  </div>
-  <div class="ShowItem">
-    <label>パスワード</label>
-    <p>*********</p>
-  </div>
-
 </div>
 
 <% if flash[:notice] %>
   <p class="notice"><%= flash[:notice] %></p>
 <% end %>
-

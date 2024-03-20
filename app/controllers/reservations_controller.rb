@@ -6,8 +6,8 @@ class ReservationsController < ApplicationController
   def confilm
     @reservation = Reservation.new(reservation_params)
     @room = Room.find(@reservation.room_id)
-    @number_of_days = (@reservation.check_out - @reservation.check_in).to_i
-    @total_charge = @room.charge * @number_of_days * @reservation.number_of_people
+    @number_of_days = sum_of_days
+    @total_charge = @room.charge * @number_of_days * sum_of_people
     if @reservation.invalid?
       render 'rooms/show'
     end
@@ -16,16 +16,29 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     @reservation.user_id = current_user.id
-    if @reservation.save
-      flash[:notice] = "施設の予約が完了しました。"
-      redirect_to :reservations
-    else
-      render :confilm
-    end
+    render 'rooms/show' and return if params[:back] || !@reservation.save
+    redirect_to reservations_path
   end
 
   private
     def reservation_params
       params.require(:reservation).permit(:check_in, :check_out, :number_of_people, :user_id, :room_id)
     end
+
+    def sum_of_days
+      if @reservation.check_out.present? && @reservation.check_in.present?
+        sum_of_days = (@reservation.check_out - @reservation.check_in).to_i
+      else
+        sum_of_days = 0
+      end
+    end
+
+    def sum_of_people
+      if @reservation.number_of_people.nil?
+        sum_of_people = 0
+      else
+        sum_of_people = @reservation.number_of_people
+      end
+    end
+
 end

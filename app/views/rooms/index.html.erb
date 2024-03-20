@@ -1,12 +1,13 @@
-<h3>登録済み一覧</h3>
-<table>
+<div class="index-container">
+<h3 class="page-title">登録済み一覧</h3>
+<table class="index-table">
   <thead>
     <tr>
-      <th>画像</th>
-      <th>施設名</th>
-      <th>紹介文</th>
-      <th>料金</th>
-      <th>作成日</th>
+      <th class="width15">画像</th>
+      <th class="width15">施設名</th>
+      <th class="width40">紹介文</th>
+      <th class="width15">料金</th>
+      <th class="width15">作成日</th>
     </tr>
   </thead>
 
@@ -20,9 +21,10 @@
         <% end %>
         <td><%= room.name %></td>
         <td><%= room.detail %></td>
-        <td><%= room.charge %></td>
-        <td><%= room.created_at %></td>
+        <td><%= number_to_currency(room.charge.to_s(:delimited), unit: "¥", format: "%u %n" ) %></td>
+        <td><%= room.created_at.to_s(:date_jp) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>

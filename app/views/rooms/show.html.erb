@@ -1,17 +1,21 @@
-<h3><%= link_to "戻る", :back %></h3>
+<h3><%= link_to "戻る", :back, class:"back-btn" %></h3>
 
-<div>
-  <% if @room.hotel_image? %>
-    <%= image_tag @room.hotel_image.url, :size => '400x260' %>
-  <% else %>
-    <%= image_tag "default_hotel.png", :size => '400x260' %>
-  <% end %>
-  <div>
-    <%= @room.name %>
-    <%= @room.charge %>
-    <%= @room.address %>
-    <%= @room.detail %>
-    <div>
+<div class="show-contener">
+  <div class="show-hotel-image">
+    <% if @room.hotel_image? %>
+      <%= image_tag @room.hotel_image.url, :size => '400x260' %>
+    <% else %>
+      <%= image_tag "default_hotel.png", :size => '400x260' %>
+    <% end %>
+  </div>
+  <div class="show-info">
+    <div class="show-name-charge">
+      <div class="show-room-name"><%= @room.name %></div>
+      <div class="show-room-charge"><%= number_to_currency(@room.charge.to_s(:delimited), unit: "¥", format: "%u %n" ) %></div>
+    </div>
+    <div><%= @room.address %></div>
+    <div><%= @room.detail %></div>
+    <div class="show-form">
       <%= form_with model: @reservation, url: confilm_reservations_path(@reservation) do |f| %>
         <div>
           <%= f.label :check_in, "チェックイン" %>
@@ -29,7 +33,7 @@
         <%= f.hidden_field :user_id, value: @user %>
         <%= f.hidden_field :room_id, value: @room.id %>
 
-        <%= f.submit "予約する"%>
+        <div><%= f.submit "予約する"%></div>
       <% end %>
     </div>
   </div>

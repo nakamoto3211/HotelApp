@@ -2,7 +2,6 @@ class RoomsController < ApplicationController
 before_action :authenticate_user!
 
   def search
-    @search = "ホテル一覧です"
     @rooms = Room.search(params[:area],params[:keyword])
   end
 
