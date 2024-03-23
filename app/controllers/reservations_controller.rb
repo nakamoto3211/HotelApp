@@ -5,6 +5,7 @@ class ReservationsController < ApplicationController
 
   def confilm
     @reservation = Reservation.new(reservation_params)
+    @reservation.user_id = current_user.id
     @room = Room.find(@reservation.room_id)
     @number_of_days = sum_of_days
     @total_charge = @room.charge * @number_of_days * sum_of_people

@@ -16,6 +16,7 @@ before_action :authenticate_user!
 
   def create
     @room = Room.new(params.require(:room).permit(:name,:detail,:charge,:address,:hotel_image,:user_id))
+    @room.user_id = current_user.id
     if @room.save
       flash[:notice] = "施設を登録しました"
       redirect_to :rooms

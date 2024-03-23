@@ -10,6 +10,7 @@ class Reservation < ApplicationRecord
     validates :room_id
   end
 
+  validates :number_of_people, numericality: {only_integer: true, greater_than_or_equal_to: 1}
   validate :date_before_checkin
   validate :date_before_checkout
 
@@ -19,7 +20,7 @@ class Reservation < ApplicationRecord
   end
 
   def date_before_checkout 
-    return if check_out.blank?
-    errors.add(:check_out,"はチェックイン以降のものを選択してください") if check_out < check_out
+    return if check_out.blank? || check_in.blank?
+    errors.add(:check_out,"はチェックイン以降のものを選択してください") if check_out < check_in
   end
 end
