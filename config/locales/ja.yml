@@ -17,6 +17,13 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    attributes:
+      room:
+        name: 施設名
+        detail: 施設詳細
+        charge: 料金
+        address: 住所
+        hotel_image: 施設画像
   date:
     abbr_day_names:
     - 日

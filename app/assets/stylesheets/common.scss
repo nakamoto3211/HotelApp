@@ -28,6 +28,11 @@ header {
   justify-content: space-between;
 }
 
+.post {
+  text-decoration: none;
+  color: navy;
+}
+
 .container {
   max-width: 1440px;
 }
@@ -298,4 +303,28 @@ th {
 
 .user-acc-edit div {
   margin-top: 10px;
+}
+
+// ログインページ
+.login_page {
+  width: 500px;
+  margin: 50px auto;
+}
+
+.login_page div {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+// ユーザー新規登録画面
+.user_new_page {
+  width: 500px;
+  margin: 50px auto;
+}
+
+.user_new_page div {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
 }
