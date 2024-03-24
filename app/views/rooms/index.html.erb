@@ -21,7 +21,7 @@
         <% end %>
         <td><%= link_to room.name, room %></td>
         <td><%= room.detail %></td>
-        <td><%= number_to_currency(room.charge.to_s(:delimited), unit: "¥", format: "%u %n" ) %></td>
+        <td><span>¥</span><%= room.charge.to_s(:delimited) %></td>
         <td><%= room.created_at.to_s(:date_jp) %></td>
       </tr>
     <% end %>

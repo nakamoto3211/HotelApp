@@ -13,7 +13,7 @@
   <div class="show-info">
     <div class="show-name-charge">
       <div class="show-room-name"><%= @room.name %></div>
-      <div class="show-room-charge"><%= number_to_currency(@room.charge.to_s(:delimited), unit: "¥", format: "%u %n" ) %></div>
+      <div class="show-room-charge"><span>¥</span><%= @room.charge.to_s(:delimited) %></div>
     </div>
     <div><%= @room.address %></div>
     <div><%= @room.detail %></div>

@@ -19,7 +19,7 @@
   </div>
   <div>
     <label>お支払い金額</label>
-    <%= number_to_currency(@total_charge.to_s(:delimited), unit: "¥", format: "%u %n" ) %>
+    <div><span>¥</span><%= @total_charge.to_s(:delimited) %></div>
   </div>
 
   <div>

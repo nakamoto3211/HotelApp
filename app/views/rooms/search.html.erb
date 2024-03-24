@@ -23,7 +23,7 @@
       <div><%= room.name %></div>
       <div><%= room.address %></div>
       <div><%= room.detail %></div>
-      <div><%= number_to_currency(room.charge.to_s(:delimited), unit: "¥", format: "%u %n" ) %></div>
+      <div><span>¥</span><%= room.charge.to_s(:delimited) %></div>
       <div><%= link_to "詳細はこちら", room, class:"show-btn" %></div>
     </div>
   <% end %>

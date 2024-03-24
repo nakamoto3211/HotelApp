@@ -23,7 +23,7 @@
           <% end %>
           <td><%= reservation.room.name %></td>
           <td><%= reservation.room.detail %></td>
-          <td><%= number_to_currency((reservation.room.charge * reservation.number_of_people * (reservation.check_out - reservation.check_in).to_i).to_s(:delimited), unit: "¥", format: "%u %n" ) %></td>
+          <td><span>¥</span><%= (reservation.room.charge * reservation.number_of_people * (reservation.check_out - reservation.check_in).to_i).to_s(:delimited) %></td>
           <td><%= reservation.check_in.to_s(:date_jp) %></td>
           <td><%= reservation.check_out.to_s(:date_jp) %></td>
           <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
