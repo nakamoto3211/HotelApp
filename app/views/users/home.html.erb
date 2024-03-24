@@ -1,7 +1,6 @@
-<h1><%= @home %></h1>
-<div>
-  <form>
-    <input type="text">
-    <button>検索</button>
-  </form>
+<div class="home-contents">
+    <div class="home_body">
+        <h1>ようこそ</h1>
+        <button><%= link_to "ホテルを探す", search_rooms_path, method: :get, class:"search_btn" %></button>
+    </div>
 </div>
