@@ -11,11 +11,11 @@ before_action :authenticate_user!
 
   def new
     @room = Room.new
-    @user = current_user.id
+    @user_id = current_user.id
   end
 
   def create
-    @room = Room.new(params.require(:room).permit(:name,:detail,:charge,:address,:hotel_image,:user_id))
+    @room = Room.new(room_params)
     @room.user_id = current_user.id
     if @room.save
       flash[:notice] = "施設を登録しました"
@@ -30,6 +30,11 @@ before_action :authenticate_user!
     @reservation = Reservation.new
     @user = current_user.id
   end
+
+  private
+    def room_params
+      params.require(:room).permit(:name,:detail,:charge,:address,:hotel_image,:user_id)
+    end
 
 end
 

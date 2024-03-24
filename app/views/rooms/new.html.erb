@@ -24,7 +24,7 @@
       <label>施設画像</label>
       <%= f.file_field :hotel_image %>
     </div>
-    <%= f.hidden_field :user_id, value: @user %>
+    <%= f.hidden_field :user_id, value: @user_id %>
 
     <div><%= f.submit "保存" %></div>
     <div><%= link_to "キャンセル", :back, class:"cancel-btn" %></div>

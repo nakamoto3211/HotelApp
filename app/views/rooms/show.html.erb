@@ -18,7 +18,7 @@
     <div><%= @room.address %></div>
     <div><%= @room.detail %></div>
     <div class="show-form">
-      <%= form_with model: @reservation, url: confilm_reservations_path(@reservation) do |f| %>
+      <%= form_with model: @reservation, url: confirm_reservations_path(@reservation) do |f| %>
         <div>
           <%= f.label :check_in, "チェックイン" %>
           <%= f.date_field :check_in %>

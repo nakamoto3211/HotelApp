@@ -9,16 +9,16 @@ Rails.application.routes.draw do
   }
 
   resources :users, :only => [:show, :edit, :update]
-  
+
   resources :rooms, :only => [:index, :new, :create, :show] do
     collection do
       get 'search'
     end
   end
-  
+
   resources :reservations, :only => [:index, :create] do
     collection do
-      post :confilm
+      post :confirm
     end
   end
 

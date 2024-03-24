@@ -3,10 +3,10 @@ class ReservationsController < ApplicationController
     @reservations = current_user.reservations #ログイン中のユーザのIDと、reservationの外部キー(user_id)が一致するreservation全て
   end
 
-  def confilm
+  def confirm
     @reservation = Reservation.new(reservation_params)
     @reservation.user_id = current_user.id
-    @room = Room.find(@reservation.room_id)
+    @room = @reservation.room
     @number_of_days = sum_of_days
     @total_charge = @room.charge * @number_of_days * sum_of_people
     if @reservation.invalid?
@@ -17,8 +17,11 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     @reservation.user_id = current_user.id
-    render 'rooms/show' and return if params[:back] || !@reservation.save
-    redirect_to reservations_path
+    if @reservation.save
+      redirect_to reservations_path
+    else
+      render 'rooms/show'
+    end
   end
 
   private
